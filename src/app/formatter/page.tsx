@@ -139,11 +139,11 @@ export default function FormatterPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+    <main className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
       <div className="max-w-3xl w-full">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight flex items-center justify-center gap-3">
-            <Database className="h-8 w-8 text-indigo-600" />
+            <Database className="h-8 w-8 text-cupros-apricot" />
             CSV Formatter
           </h1>
           <p className="mt-4 text-lg text-slate-600">
@@ -158,7 +158,7 @@ export default function FormatterPage() {
               <div className="space-y-6">
                 <div
                   className={`border-2 border-dashed rounded-xl p-12 text-center transition-colors ${
-                    file ? 'border-indigo-500 bg-indigo-50' : 'border-slate-300 bg-slate-50 hover:bg-slate-100 hover:border-slate-400'
+                    file ? 'border-cupros-apricot bg-[#FFF1E8]' : 'border-slate-300 bg-slate-50 hover:bg-slate-100 hover:border-slate-400'
                   }`}
                 >
                   <input
@@ -173,15 +173,15 @@ export default function FormatterPage() {
                     className="cursor-pointer flex flex-col items-center gap-4"
                   >
                     <div className="bg-white p-4 rounded-full shadow-sm">
-                      <UploadCloud className={`h-8 w-8 ${file ? 'text-indigo-600' : 'text-slate-400'}`} />
+                      <UploadCloud className={`h-8 w-8 ${file ? 'text-cupros-apricot' : 'text-slate-400'}`} />
                     </div>
                     <div>
                       {file ? (
-                        <p className="text-lg font-medium text-indigo-900">{file.name}</p>
+                        <p className="text-lg font-medium text-[#E85F1C]">{file.name}</p>
                       ) : (
                         <>
                           <p className="text-lg font-medium text-slate-700">Click to upload a CSV file</p>
-                          <p className="text-sm text-slate-500 mt-1">Accepts NWA or Cupr.os-style columns</p>
+                          <p className="text-sm text-slate-500 mt-1">Accepts Cupr.os-style columns</p>
                         </>
                       )}
                     </div>
@@ -195,7 +195,7 @@ export default function FormatterPage() {
                       type="text"
                       value={source}
                       onChange={(e) => setSource(e.target.value)}
-                      className="block w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+                      className="block w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#FF7A3D] focus:border-cupros-apricot bg-white"
                     />
                   </div>
                   <div>
@@ -203,7 +203,7 @@ export default function FormatterPage() {
                     <select
                       value={segment}
                       onChange={(e) => setSegment(e.target.value as CuprOsSegment)}
-                      className="block w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+                      className="block w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#FF7A3D] focus:border-cupros-apricot bg-white"
                     >
                       <option value="Dispensary">Dispensary</option>
                       <option value="Smoke Shop">Smoke Shop</option>
@@ -222,7 +222,7 @@ export default function FormatterPage() {
                 <button
                   onClick={processFile}
                   disabled={!file || isProcessing}
-                  className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center gap-2"
+                  className="w-full bg-cupros-apricot hover:bg-[#FF8F52] text-white font-semibold py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center gap-2"
                 >
                   {isProcessing ? 'Processing data...' : 'Format for Cupr.os CRM'}
                 </button>
@@ -254,7 +254,7 @@ export default function FormatterPage() {
                       type="text"
                       value={filename}
                       onChange={(e) => setFilename(e.target.value)}
-                      className="block w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+                      className="block w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#FF7A3D] focus:border-cupros-apricot bg-white"
                     />
                   </div>
                 </div>
@@ -272,7 +272,7 @@ export default function FormatterPage() {
                   </button>
                   <button
                     onClick={downloadProcessedFile}
-                    className="px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-lg transition-colors flex justify-center items-center gap-2 shadow-md"
+                    className="px-8 py-3 bg-[#2A2A2A] hover:bg-[#3A3A3A] text-white font-medium rounded-lg transition-colors flex justify-center items-center gap-2 shadow-md"
                   >
                     <Download className="h-5 w-5" />
                     Download CSV

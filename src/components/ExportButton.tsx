@@ -27,7 +27,7 @@ export function ExportButton({ businesses, defaultFilename, defaultSegment }: {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 bg-white p-3 rounded-xl border border-slate-200">
       <div className="flex flex-col gap-1.5">
         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Filename</label>
         <div className="relative">
@@ -39,7 +39,7 @@ export function ExportButton({ businesses, defaultFilename, defaultSegment }: {
             value={filename}
             onChange={(e) => setFilename(e.target.value)}
             placeholder="cupros_leads.csv"
-            className="pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-48 bg-white"
+            className="pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#FF7A3D] focus:border-cupros-apricot w-48 bg-white"
             disabled={businesses.length === 0}
           />
         </div>
@@ -52,7 +52,7 @@ export function ExportButton({ businesses, defaultFilename, defaultSegment }: {
           value={source}
           onChange={(e) => setSource(e.target.value)}
           placeholder="Cold Calling"
-          className="px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-40 bg-white"
+          className="px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#FF7A3D] focus:border-cupros-apricot w-40 bg-white"
           disabled={businesses.length === 0}
         />
       </div>
@@ -66,7 +66,7 @@ export function ExportButton({ businesses, defaultFilename, defaultSegment }: {
           <select
             value={segment}
             onChange={(e) => setSegment(e.target.value as CuprOsSegment)}
-            className="pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-40 bg-white appearance-none"
+            className="pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#FF7A3D] focus:border-cupros-apricot w-40 bg-white appearance-none"
             disabled={businesses.length === 0}
           >
             <option value="Dispensary">Dispensary</option>
@@ -79,9 +79,9 @@ export function ExportButton({ businesses, defaultFilename, defaultSegment }: {
       <button
         onClick={handleExport}
         disabled={businesses.length === 0}
-        className="inline-flex items-center gap-2 bg-slate-800 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:mt-5 shadow-sm"
+        className="inline-flex items-center gap-2 bg-[#2A2A2A] text-white px-5 py-2.5 rounded-lg font-bold hover:bg-[#3A3A3A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:mt-5 shadow-sm border border-[#FF7A3D]/40"
       >
-        <Download size={16} />
+        <Download size={16} className="text-cupros-apricot" />
         Export Cupr.os CSV
       </button>
     </div>

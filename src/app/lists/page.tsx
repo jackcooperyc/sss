@@ -26,11 +26,11 @@ export default function ListsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
           <div>
-            <Link href="/" className="text-sm font-medium text-indigo-600 hover:text-indigo-700 flex items-center gap-1 mb-2">
+            <Link href="/" className="text-sm font-medium text-cupros-apricot hover:text-[#E85F1C] flex items-center gap-1 mb-2">
               <ArrowLeft size={14} /> Back to Search
             </Link>
             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">My Lead Lists</h1>
@@ -57,7 +57,7 @@ export default function ListsPage() {
             </p>
             <Link 
               href="/" 
-              className="mt-6 inline-flex items-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors"
+              className="mt-6 inline-flex items-center px-6 py-3 bg-cupros-apricot text-white font-semibold rounded-xl hover:bg-[#E85F1C] transition-colors"
             >
               Start Searching
             </Link>
@@ -112,7 +112,7 @@ export default function ListsPage() {
                     </button>
                     <button 
                       onClick={() => toggleExpand(list.id)}
-                      className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+                      className="p-2 text-slate-400 hover:text-cupros-apricot hover:bg-[#FFF1E8] rounded-lg transition-all"
                     >
                       {expandedListId === list.id ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                     </button>

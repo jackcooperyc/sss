@@ -18,25 +18,25 @@ export interface Business {
 
 export function BusinessCard({ business }: { business: Business }) {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 hover:shadow-lg hover:border-[#FFD9C2] transition-all duration-300">
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
-          <h3 className="text-xl font-bold text-slate-800 leading-tight pr-2">
+          <h3 className="text-xl font-bold text-[#1A1A1A] leading-tight pr-2">
             {business.name}
           </h3>
-          <span className="inline-flex items-center gap-1 bg-indigo-50 text-indigo-700 text-xs font-semibold px-2.5 py-1 rounded-full border border-indigo-100 flex-shrink-0">
-            <ShieldCheck size={14} className="text-indigo-600" />
-            NWAGo Verified
+          <span className="inline-flex items-center gap-1 bg-[#FFF1E8] text-[#E85F1C] text-xs font-semibold px-2.5 py-1 rounded-full border border-[#FFD9C2] flex-shrink-0">
+            <ShieldCheck size={14} className="text-cupros-apricot" />
+            Cupr.os Verified
           </span>
         </div>
 
         <div className="space-y-2 mb-4">
           <div className="flex items-start gap-2 text-slate-600">
-            <Phone size={16} className="mt-0.5 text-slate-400 shrink-0" />
+            <Phone size={16} className="mt-0.5 text-cupros-apricot shrink-0" />
             <span className="text-sm">{business.phone}</span>
           </div>
           <div className="flex items-start gap-2 text-slate-600">
-            <MapPin size={16} className="mt-0.5 text-slate-400 shrink-0" />
+            <MapPin size={16} className="mt-0.5 text-cupros-apricot shrink-0" />
             <span className="text-sm">{business.address}</span>
           </div>
         </div>

@@ -14,7 +14,6 @@ interface SaveToListModalProps {
 export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps) {
   const { lists, createList, addLeadsToList } = useLists();
   const [selectedListId, setSelectedListId] = useState<string>('');
-  // If no lists exist yet, default to the create-new flow immediately
   const [isCreatingNew, setIsCreatingNew] = useState(() => lists.length === 0);
   const [newListName, setNewListName] = useState('');
   const [newListCategory, setNewListCategory] = useState('');
@@ -26,7 +25,7 @@ export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps
     const creatingNew = isCreatingNew || lists.length === 0;
     if (creatingNew) {
       if (!newListName.trim()) return;
-      const newList = createList(newListName, newListCategory || 'NWAGo');
+      const newList = createList(newListName, newListCategory || 'Cupr.os');
       addLeadsToList(newList.id, leads);
     } else {
       if (!selectedListId) return;
@@ -37,7 +36,6 @@ export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps
     setTimeout(() => {
       setIsSuccess(false);
       onClose();
-      // Reset state
       setIsCreatingNew(false);
       setNewListName('');
       setNewListCategory('');
@@ -46,11 +44,11 @@ export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200">
-        <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-          <h3 className="font-bold text-slate-800 flex items-center gap-2">
-            <ListPlus className="text-indigo-600 h-5 w-5" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+        <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-white">
+          <h3 className="font-bold text-[#1A1A1A] flex items-center gap-2">
+            <ListPlus className="text-cupros-apricot h-5 w-5" />
             Save {leads.length} Leads to List
           </h3>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-600 transition-colors">
@@ -58,13 +56,13 @@ export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-6 bg-white">
           {isSuccess ? (
-            <div className="py-8 text-center animate-in zoom-in duration-300">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
-                <CheckCircle2 className="h-8 w-8 text-green-600" />
+            <div className="py-8 text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#FFF1E8] mb-4">
+                <CheckCircle2 className="h-8 w-8 text-cupros-apricot" />
               </div>
-              <h4 className="text-xl font-bold text-slate-900">Leads Saved!</h4>
+              <h4 className="text-xl font-bold text-[#1A1A1A]">Leads Saved!</h4>
               <p className="text-slate-500 mt-1">Successfully added to your list.</p>
             </div>
           ) : (
@@ -77,7 +75,7 @@ export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps
                   <select
                     value={selectedListId}
                     onChange={(e) => setSelectedListId(e.target.value)}
-                    className="w-full p-3 border border-slate-200 rounded-xl bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-[#FF7A3D] outline-none"
                   >
                     <option value="">-- Choose a list --</option>
                     {lists.map((list) => (
@@ -88,7 +86,7 @@ export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps
                   </select>
                   <button
                     onClick={() => setIsCreatingNew(true)}
-                    className="mt-4 text-sm font-medium text-indigo-600 hover:text-indigo-700 flex items-center gap-1"
+                    className="mt-4 text-sm font-medium text-[#E85F1C] hover:text-cupros-apricot flex items-center gap-1"
                   >
                     <Plus size={16} />
                     Or create a new list
@@ -116,19 +114,19 @@ export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps
                       </div>
                       <input
                         type="text"
-                        placeholder="List Name (e.g. Seattle Plumbers)"
+                        placeholder="List Name (e.g. Missoula Smoke Shops)"
                         value={newListName}
                         onChange={(e) => setNewListName(e.target.value)}
-                        className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
+                        className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#FF7A3D] outline-none bg-white"
                         autoFocus
                       />
                     </div>
                     <input
                       type="text"
-                      placeholder="Category (e.g. NWAGo, Cleaning)"
+                      placeholder="Category (e.g. Cupr.os, Smoke Shop)"
                       value={newListCategory}
                       onChange={(e) => setNewListCategory(e.target.value)}
-                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
+                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#FF7A3D] outline-none bg-white"
                     />
                   </div>
                 </div>
@@ -141,7 +139,7 @@ export function SaveToListModal({ isOpen, onClose, leads }: SaveToListModalProps
                     ? !newListName.trim()
                     : !selectedListId
                 }
-                className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 transition-all disabled:opacity-50 disabled:shadow-none"
+                className="w-full py-4 bg-cupros-apricot hover:bg-[#E85F1C] text-white font-bold rounded-xl shadow-cupros-apricot transition-all disabled:opacity-50 disabled:shadow-none"
               >
                 Save Leads
               </button>
