@@ -99,10 +99,10 @@ export default function ListsPage() {
                     {list.leads.length >= 20 && (
                       <div className="hidden lg:flex items-center gap-1.5 text-xs font-bold text-green-600 mr-2 bg-green-50 px-2 py-1 rounded">
                         <CheckCircle2 size={12} />
-                        Ready for GHL
+                        Ready for Cupr.os
                       </div>
                     )}
-                    <ExportButton businesses={list.leads} />
+                    <ExportButton businesses={list.leads} defaultFilename={list.name} />
                     <button 
                       onClick={() => removeList(list.id)}
                       className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"

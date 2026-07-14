@@ -18,8 +18,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NWAGo | GHL Lead Gen",
-  description: "No-Website-Available lead finder for GoHighLevel users.",
+  title: "NWAGo | Cupr.os Lead Gen",
+  description: "No-Website-Available lead finder for Montana cannabis retail — exports to Cupr.os CRM.",
 };
 
 export default function RootLayout({
@@ -28,9 +28,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
         <ListProvider>
           <SearchBankProvider>

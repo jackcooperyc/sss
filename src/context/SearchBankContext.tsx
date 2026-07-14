@@ -13,22 +13,38 @@ interface SearchBankContextType {
 
 const SearchBankContext = createContext<SearchBankContextType | undefined>(undefined);
 
-const DEFAULT_TYPES = ['Roofing', 'Plumbing', 'HVAC', 'Electrician', 'Towing', 'Landscaping', 'Dental', 'Auto Repair'];
-const DEFAULT_LOCATIONS = ['Seattle, WA', 'Tri-Cities, WA', 'Spokane, WA', 'Portland, OR', 'Boise, ID'];
+/** Cupr.os market: cannabis retail (dispensaries + smoke shops) across Montana. */
+const DEFAULT_TYPES = [
+  'Dispensary',
+  'Cannabis Dispensary',
+  'Smoke Shop',
+  'Vape Shop',
+  'CBD Store',
+  'Hemp Shop',
+];
+const DEFAULT_LOCATIONS = [
+  'Missoula, MT',
+  'Bozeman, MT',
+  'Billings, MT',
+  'Kalispell, MT',
+  'Helena, MT',
+  'Great Falls, MT',
+];
+
+const STORAGE_KEY = 'nwago_search_bank_v2';
 
 export function SearchBankProvider({ children }: { children: ReactNode }) {
   const [businessTypes, setBusinessTypes] = useState<string[]>([]);
   const [locations, setLocations] = useState<string[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem('nwago_search_bank');
+    const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
         const { types, locs } = JSON.parse(saved);
-        setBusinessTypes(types || DEFAULT_TYPES);
-        setLocations(locs || DEFAULT_LOCATIONS);
+        setBusinessTypes(types?.length ? types : DEFAULT_TYPES);
+        setLocations(locs?.length ? locs : DEFAULT_LOCATIONS);
       } catch (e) {
         console.error('Failed to parse search bank', e);
         setBusinessTypes(DEFAULT_TYPES);
@@ -41,12 +57,11 @@ export function SearchBankProvider({ children }: { children: ReactNode }) {
     setIsLoaded(true);
   }, []);
 
-  // Save to localStorage whenever bank changes
   useEffect(() => {
     if (isLoaded) {
-      localStorage.setItem('nwago_search_bank', JSON.stringify({ 
-        types: businessTypes, 
-        locs: locations 
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        types: businessTypes,
+        locs: locations,
       }));
     }
   }, [businessTypes, locations, isLoaded]);

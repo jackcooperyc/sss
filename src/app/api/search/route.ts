@@ -82,9 +82,17 @@ export async function GET(request: NextRequest) {
       let city = '';
       let state = '';
       let postalCode = '';
+      let streetNumber = '';
+      let route = '';
 
       if (place.addressComponents) {
         for (const component of place.addressComponents as Array<{types: string[], longText: string, shortText: string}>) {
+          if (component.types.includes('street_number')) {
+            streetNumber = component.longText;
+          }
+          if (component.types.includes('route')) {
+            route = component.longText;
+          }
           if (component.types.includes('locality')) {
             city = component.longText;
           }
@@ -97,10 +105,13 @@ export async function GET(request: NextRequest) {
         }
       }
 
+      const streetAddress = [streetNumber, route].filter(Boolean).join(' ').trim();
+
       return {
         id: place.id,
         name: (place.displayName as { text: string })?.text || 'Unknown Business',
         address: place.formattedAddress,
+        streetAddress: streetAddress || undefined,
         phone: place.nationalPhoneNumber || 'No phone provided',
         website: place.websiteUri || null,
         description: (place.editorialSummary as { text: string })?.text || 'No description provided',

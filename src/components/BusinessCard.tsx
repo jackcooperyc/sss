@@ -4,6 +4,8 @@ export interface Business {
   id: string;
   name: string;
   address: string;
+  /** Street line only when available (for Cupr.os Address Line 1). */
+  streetAddress?: string;
   phone: string;
   website: string | null;
   description: string;

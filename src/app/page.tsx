@@ -87,13 +87,15 @@ export default function Home() {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full text-indigo-300 text-xs font-bold uppercase tracking-widest mb-4">
               <ShieldCheck size={14} />
-              GHL Lead Generation Pro
+              Cupr.os CRM · Cannabis Retail
             </div>
             <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
               NWAGo <span className="text-indigo-400">Finder</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Target local businesses <span className="text-white font-bold italic">without a website</span>. Build your GoHighLevel opportunity pipeline in minutes.
+              Find Montana dispensaries &amp; smoke shops{' '}
+              <span className="text-white font-bold italic">without a real website</span>.
+              Export straight into your Cupr.os outreach tracker.
             </p>
           </div>
 
@@ -110,7 +112,7 @@ export default function Home() {
                     setQuery(e.target.value);
                     // Reset bank selections if user types manually (optional logic)
                   }}
-                  placeholder="e.g. Plumbers in Tri-Cities, WA"
+                  placeholder="e.g. Dispensary in Missoula, MT"
                   className="block w-full pl-11 pr-4 py-4 rounded-xl border-0 bg-white/10 text-white ring-1 ring-inset ring-white/20 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-lg transition-all"
                   disabled={isLoading}
                 />
@@ -228,7 +230,16 @@ export default function Home() {
                   <ListPlus size={20} />
                   Save to List
                 </button>
-                <ExportButton businesses={results} />
+                <ExportButton
+                  key={`${selectedType || 'none'}-${selectedLoc || 'none'}`}
+                  businesses={results}
+                  defaultSegment={
+                    selectedType?.toLowerCase().includes('smoke') ||
+                    selectedType?.toLowerCase().includes('vape')
+                      ? 'Smoke Shop'
+                      : 'Dispensary'
+                  }
+                />
               </div>
             </div>
 
